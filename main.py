@@ -26,6 +26,11 @@ def toggle_ac():
     global led_state
     led_state = not led_state
     ac_indicator.toggle()
+    buzzer = Buzzer(16)
+    
+    buzzer.on()
+    sleep(0.5)
+    buzzer.off()
 
 
 inside_light = LED(17)    # Yellow LED
@@ -42,10 +47,7 @@ ac_button.when_pressed =toggle_ac
 
 
 
-# ac_indicator.on()
-# sleep(3)
-# buzzer = Buzzer(17)
-# while True:
-#     buzzer.on()
+
+
 
 pause()
