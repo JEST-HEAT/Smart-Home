@@ -4,11 +4,28 @@ import Adafruit_DHT
 from time import sleep
 from signal import pause
 
-def switch_up(status, led):
-    if status == "on":
-        LED(led).on()
-    else:
-        LED(led).off()
+led_state=False
+
+
+
+def toggle_outside():
+    global led_state
+    led_state = not led_state
+    outside_light.toggle()
+
+
+
+def toggle_inside():
+    global led_state
+    led_state = not led_state
+    inside_light.toggle()
+
+
+
+def toggle_ac():
+    global led_state
+    led_state = not led_state
+    ac_indicator.toggle()
 
 
 inside_light = LED(17)    # Yellow LED
@@ -19,9 +36,9 @@ inside_button = Button(23)
 ac_button = Button(25)
 outside_button = Button(2)
 
-outside_button.when_pressed = outside_light.on
-inside_button.when_pressed = inside_light.on
-ac_button.when_pressed = ac_indicator.on
+inside_button.when_pressed = toggle_inside
+outside_button.when_pressed = toggle_outside
+ac_button.when_pressed =toggle_ac
 
 
 
