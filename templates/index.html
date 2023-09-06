@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Automation</title>
+</head>
+<body>
+    <h1>Home Automation</h1>
+    <h2>Humidity: {{ humidity }}%</h2>
+    <h2>Temperature: {{ temperature }}°C</h2>
+
+    <form method="POST" action="/toggle_outside">
+        <button type="submit">Toggle Outside Light</button>
+    </form>
+
+    <form method="POST" action="/toggle_inside">
+        <button type="submit">Toggle Inside Light</button>
+    </form>
+
+    <form method="POST" action="/toggle_ac">
+        <button type="submit">Toggle AC</button>
+    </form>
+</body>
+</html>
