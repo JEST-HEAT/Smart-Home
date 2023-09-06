@@ -1,24 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Home Automation</title>
+  <meta charset="UTF-8">
+  <title>Home Automation</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="static/styles.css">
 </head>
+
 <body>
-    <h1>Home Automation</h1>
-    <h2>Humidity: {{ humidity }}%</h2>
-    <h2>Temperature: {{ temperature }}°C</h2>
+  <div class="text-center">
+    <div class="container">
+      <h1 class="mt-5">Smart Home Automation</h1>
 
-    <form method="POST" action="/toggle_outside">
-        <button type="submit">Toggle Outside Light</button>
-    </form>
+      <div class="row" style="display: flex; align-items: center;">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+                <img src="static/humidity.png" class="card-img-top" style="width: 75px;">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h4 class="card-text">{{ humidity }} %</h4>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <form method="POST" action="/toggle_inside">
-        <button type="submit">Toggle Inside Light</button>
-    </form>
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+                <img src="static/celsius.png" class="card-img-top" style="width: 75px;">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h4 class="card-text">{{ temperature }} %</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <form method="POST" action="/toggle_ac">
-        <button type="submit">Toggle AC</button>
-    </form>
+      <form method="POST" action="/toggle_outside">
+        <button type="submit" class="btn btn-primary mt-4">Toggle Outside Light</button>
+      </form>
+
+      <form method="POST" action="/toggle_inside">
+        <button type="submit" class="btn btn-primary mt-4">Toggle Inside Light</button>
+      </form>
+
+      <form method="POST" action="/toggle_ac">
+        <button type="submit" class="btn btn-primary mt-4">Toggle AC</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Include Bootstrap JS (jQuery and Popper.js are required dependencies) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

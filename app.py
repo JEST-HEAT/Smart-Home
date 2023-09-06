@@ -19,11 +19,14 @@ sensor = Adafruit_DHT.DHT11
 temp_pin = 21
 temperature = None
 
+
 # Function to toggle outside light
 def toggle_outside():
     global led_state
     led_state = not led_state
     outside_light.toggle()
+ 
+
 
 # Function to toggle inside light
 def toggle_inside():
@@ -63,24 +66,26 @@ temp_thread.daemon = True
 temp_thread.start()
 
 # Routes for the web interface
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html', led_state=led_state, temperature=temperature, humidity=humidity)
 
 @app.route('/toggle_outside', methods=['POST'])
 def toggle_outside_route():
     toggle_outside()
-    return redirect(url_for('index'))
+    return redirect("/")
 
 @app.route('/toggle_inside', methods=['POST'])
 def toggle_inside_route():
     toggle_inside()
-    return redirect(url_for('index'))
+    return redirect("/")
+
 
 @app.route('/toggle_ac', methods=['POST'])
 def toggle_ac_route():
     toggle_ac()
-    return redirect(url_for('index'))
+    return redirect("/")
+
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='127.0.0.2')
