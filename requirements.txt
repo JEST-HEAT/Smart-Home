@@ -1,6 +1,6 @@
 Flask==2.2.1
 gunicorn==21.2.0
-gpiozero==1.6.4
+gpiozero==1.6.2
 Adafruit-DHT==1.4.0
 
 
