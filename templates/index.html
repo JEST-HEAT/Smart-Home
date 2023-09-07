@@ -6,19 +6,37 @@
   <title>Home Automation</title>
   <!-- Include Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="static/styles.css">
+ 
+  <!--<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"> -->
+  <!-- <style>
+    /* Custom CSS for setting the background image */
+    .bg-image {
+      background-image: url('static/backg'); /* Replace with the path to your background image */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed; /* Optional: Fix the background image */
+      min-height: 100vh; /* Adjust as needed to cover the entire viewport height */
+    }
+  </style> -->
+
+
+
+
 </head>
 
-<body>
-  <div class="text-center">
-    <div class="container">
-      <h1 class="mt-5">Smart Home Automation</h1>
 
-      <div class="row" style="display: flex; align-items: center;">
+<body style="background: url('static/ground2.jpg');   background-size: cover;" >
+  <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="container">
+      <h1 class="mt-5 text-center">Smart Home Automation</h1>
+      <br>
+      <br>
+
+      <div class="row justify-content-center align-items-center">
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row g-0">
             <div class="col-md-4">
-                <img src="static/humidity.png" class="card-img-top" style="width: 75px;">
+              <img src="static/humidity.png" class="card-img-top" style="width: 75px;">
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -31,28 +49,44 @@
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row g-0">
             <div class="col-md-4">
-                <img src="static/celsius.png" class="card-img-top" style="width: 75px;">
+              <img src="static/celsius.png" class="card-img-top" style="width: 75px;">
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h4 class="card-text">{{ temperature }} %</h4>
+                <h4 class="card-text">{{ temperature }}&deg;C </h4>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      <div class="text-center">
       <form method="POST" action="/toggle_outside">
-        <button type="submit" class="btn btn-primary mt-4">Toggle Outside Light</button>
+        {% if led_states[0] == False%}
+        <button type="submit" class="btn btn-primary mt-4">Turn Outside Light ON</button>
+        {%else%}
+        <button type="submit" class="btn btn-primary mt-4" style="background-color: red;">Turn Outside Light OFF</button>
+        {%endif%}
       </form>
 
       <form method="POST" action="/toggle_inside">
-        <button type="submit" class="btn btn-primary mt-4">Toggle Inside Light</button>
+        {% if led_states[1] == False%}
+        <button type="submit" class="btn btn-primary mt-4">Turn Inside Light ON</button>
+        {%else%}
+        <button type="submit" class="btn btn-primary mt-4" style="background-color: red;">Turn Inside Light OFF
+
+        </button>
+        {%endif%}
       </form>
 
       <form method="POST" action="/toggle_ac">
-        <button type="submit" class="btn btn-primary mt-4">Toggle AC</button>
+        {%if led_states[2] == False%}
+        <button type="submit" class="btn btn-primary mt-4">Turn AC ON</button>
+        {%else%}
+        <button type="submit" class="btn btn-primary mt-4" style="background-color: red;">Turn AC OFF</button>
+        {%endif%}
       </form>
+    </div>
     </div>
   </div>
 
