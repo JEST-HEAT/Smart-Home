@@ -112,4 +112,4 @@ def toggle_ac_route():
 
 
 if __name__ == '__main__':
-    app.run(debug= True, host='192.168.24.166')
+    app.run(debug= True, host='192.168.24.166' , port = 5001)
