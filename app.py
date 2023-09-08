@@ -29,7 +29,6 @@ def toggle_outside():
     global led_state_out
     led_state_out = not led_state_out
     outside_light.toggle()
- 
 
 
 # Function to toggle inside light
@@ -37,6 +36,7 @@ def toggle_inside():
     global led_state_in
     led_state_in = not led_state_in
     inside_light.toggle()
+
 
 # Function to toggle AC and sound buzzer
 def toggle_ac():
@@ -47,6 +47,7 @@ def toggle_ac():
     sleep(0.5)
     buzzer.off()
 
+
 def temperature_check():
     sensor = Adafruit_DHT.DHT11
     pin = 21
@@ -54,6 +55,7 @@ def temperature_check():
     # print("Temperature:  {}".format(temperature))
     return temperature 
 temp_value= temperature_check()
+
 # Function to read temperature and humidity
 def read_temperature_humidity():
     global temperature
@@ -70,11 +72,9 @@ def read_temperature_humidity():
     
 
 def ac_auto_toggle():
-   
-   if temp_value>=28.0 :
-       toggle_ac()   
-   else: 
+   if temp_value>=29.0 :
        toggle_ac()
+
 
 
 
@@ -112,4 +112,4 @@ def toggle_ac_route():
 
 
 if __name__ == '__main__':
-    app.run(debug= True, host='192.168.24.166' , port = 5001)
+    app.run(debug= True, host='0.0.0.0' , port = 5001)
